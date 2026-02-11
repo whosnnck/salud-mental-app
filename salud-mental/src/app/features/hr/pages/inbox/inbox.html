@@ -1,0 +1,49 @@
+<div class="hr-inbox">
+  <h2>Bandeja de entrada</h2>
+
+  <div class="inbox-wrapper">
+    <aside class="inbox-list">
+      <div *ngIf="loading" class="loading">Cargando mensajes...</div>
+      <div *ngIf="error" class="error">{{ error }}</div>
+      <ul>
+        <li
+          *ngFor="let r of requests"
+          (click)="openRequest(r)"
+          [class.selected]="selected?.id === r.id"
+        >
+          <div class="row">
+            <div class="from">{{ r.user_id ? 'Usuario ' + r.user_id : 'Anon' }}</div>
+            <div class="date">{{ r.created_at | date: 'short' }}</div>
+          </div>
+          <div class="subject">{{ r.subject || r.type || r.request_type || 'Solicitud' }}</div>
+          <div class="snippet">
+            {{ (r.description || r.message || '').slice(0, 120)
+            }}{{ (r.description || r.message || '').length > 120 ? '…' : '' }}
+          </div>
+        </li>
+      </ul>
+    </aside>
+
+    <section class="inbox-message">
+      <div *ngIf="!selected" class="empty">Selecciona un mensaje para verlo</div>
+      <div *ngIf="selected" class="message-card">
+        <div class="message-header">
+          <h3>{{ selected.subject || selected.request_type || 'Solicitud' }}</h3>
+          <div class="meta">
+            <span class="from">De: Usuario {{ selected.user_id }}</span>
+            <span class="date"
+              >{{ selected.created_at | date: 'fullDate' }}
+              {{ selected.created_at | date: 'shortTime' }}</span
+            >
+          </div>
+        </div>
+        <div class="message-body">{{ selected.description || selected.message }}</div>
+        <div class="message-actions">
+          <button class="resolve-btn" (click)="markResolved(selected.id)">
+            Marcar como resuelto
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

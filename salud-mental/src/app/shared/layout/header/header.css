@@ -1,0 +1,59 @@
+.header {
+  height: 60px;
+  background: linear-gradient(135deg, #e8f5e9 0%, #f4f7f6 100%);
+  border-bottom: 2px solid #2e7d32;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  font-weight: 600;
+  color: #2f3e46;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.app-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2e7d32;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.welcome-text {
+  font-size: 0.9rem;
+  color: #2f3e46;
+  font-weight: 500;
+}
+
+.logout-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.logout-btn:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);
+}
+
+.logout-btn:active {
+  transform: translateY(0);
+}

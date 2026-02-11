@@ -1,0 +1,90 @@
+.hr-inbox {
+  padding: 18px;
+}
+
+.inbox-wrapper {
+  display: flex;
+  gap: 16px;
+}
+
+.inbox-list {
+  width: 360px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+  padding: 12px;
+  overflow-y: auto;
+  max-height: 68vh;
+}
+
+.inbox-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.inbox-list li {
+  padding: 12px;
+  border-bottom: 1px solid #f1f5f9;
+  cursor: pointer;
+}
+.inbox-list li.selected {
+  background: #f0fdf4;
+}
+.inbox-list .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.inbox-list .from {
+  font-weight: 700;
+  color: #111827;
+}
+.inbox-list .date {
+  color: #6b7280;
+  font-size: 12px;
+}
+.inbox-list .subject {
+  font-weight: 700;
+  color: #065f46;
+  margin-bottom: 4px;
+}
+.inbox-list .snippet {
+  color: #4b5563;
+  font-size: 13px;
+}
+
+.inbox-message {
+  flex: 1;
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+  min-height: 300px;
+}
+.empty {
+  color: #6b7280;
+}
+.message-header h3 {
+  margin: 0 0 6px 0;
+}
+.message-header .meta {
+  color: #6b7280;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+.message-body {
+  white-space: pre-wrap;
+  color: #111827;
+}
+.message-actions {
+  margin-top: 12px;
+}
+.resolve-btn {
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}

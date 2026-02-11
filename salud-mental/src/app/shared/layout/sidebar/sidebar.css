@@ -1,0 +1,162 @@
+.sidebar {
+  width: 240px;
+  height: 100vh;
+  background: linear-gradient(180deg, #e8f5e9, #f4f7f6);
+  padding: 20px 15px;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.05);
+  transition: width 0.3s ease;
+  position: relative;
+  overflow-y: auto;
+}
+
+.sidebar.closed {
+  width: 70px;
+}
+
+/* Encabezado */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.menu-btn {
+  background: white;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 6px 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.sidebar h2 {
+  font-size: 18px;
+  font-family: inherit;
+  color: #2e7d32;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* Navegación */
+.sidebar-nav {
+  font-family: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Elemento del menú */
+.menu-item {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Links del menú principal */
+.menu-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #2f3e46;
+  font-weight: 700;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+}
+
+.menu-icon {
+  font-size: 20px;
+  min-width: 20px;
+}
+
+.menu-label {
+  white-space: nowrap;
+  flex: 1;
+}
+
+.menu-link:hover {
+  background: rgba(76, 175, 80, 0.12);
+  transform: translateX(4px);
+}
+
+.menu-link.active,
+.menu-link.submenu-toggle.expanded {
+  background: linear-gradient(90deg, #4caf50, #42a5f5);
+  color: white;
+}
+
+/* Submenú toggle arrow */
+.submenu-arrow {
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+/* Elementos con submenú */
+.menu-with-submenu {
+  display: flex;
+  flex-direction: column;
+}
+
+.submenu-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Submenú */
+.submenu {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 4px;
+  margin-left: 8px;
+  border-left: 2px solid rgba(76, 175, 80, 0.3);
+  padding-left: 8px;
+}
+
+.submenu-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #2f3e46;
+  font-weight: 400;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+}
+
+.submenu-icon {
+  font-size: 16px;
+  min-width: 16px;
+}
+
+.submenu-label {
+  white-space: nowrap;
+  flex: 1;
+}
+
+.submenu-link:hover {
+  background: rgba(76, 175, 80, 0.08);
+  transform: translateX(2px);
+}
+
+.submenu-link.active {
+  background: rgba(76, 175, 80, 0.2);
+  color: #2e7d32;
+  font-weight: 600;
+}

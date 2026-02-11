@@ -1,0 +1,108 @@
+<div class="hr-dashboard">
+  <!-- Use shared app header; dashboard relies on the global header -->
+  <main class="hr-main">
+    <section class="top-row">
+      <div class="summary-cards">
+        <article class="card">
+          <div class="card-title">Empleados Activos</div>
+          <div class="card-value">{{ totalEmployees }}</div>
+        </article>
+        <article class="card">
+          <div class="card-title">Presentes Hoy</div>
+          <div class="card-value">{{ presentCount }}</div>
+        </article>
+        <article class="card">
+          <div class="card-title">Ausentes</div>
+          <div class="card-value">{{ absentCount }}</div>
+        </article>
+      </div>
+
+      <div class="search-card">
+        <input type="text" placeholder="Buscar por nombre o email" (input)="search($event)" />
+      </div>
+    </section>
+
+    <section class="employees-section">
+      <h2>Estado de Empleados</h2>
+
+      <div *ngIf="isLoading" class="loading">Cargando empleados...</div>
+      <div *ngIf="error" class="error">{{ error }}</div>
+
+      <div class="table-container" *ngIf="!isLoading && !error">
+        <table class="employees-table">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Departamento</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let employee of employees" [class.absent]="employee.status === 'Ausente'">
+              <td class="name">{{ employee.full_name }}</td>
+              <td class="email">{{ employee.email }}</td>
+              <td class="dept">{{ employee.department || '-' }}</td>
+              <td>
+                <span
+                  class="status-badge"
+                  [class.present]="employee.status === 'Presente'"
+                  [class.absent]="employee.status === 'Ausente'"
+                >
+                  {{ employee.status || 'Sin datos' }}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="anon-checkins-section">
+      <h2>Check-ins Anónimos</h2>
+      <nav class="anon-submenu">
+        <button
+          class="anon-tab"
+          [class.active]="selectedAnonTab === 'summary'"
+          (click)="selectAnonTab('summary')"
+        >
+          Resumen
+        </button>
+        <button
+          class="anon-tab"
+          [class.active]="selectedAnonTab === 'recent'"
+          (click)="selectAnonTab('recent')"
+        >
+          Entradas recientes
+        </button>
+      </nav>
+
+      <div class="anon-chart" *ngIf="selectedAnonTab === 'summary'">
+        <div class="pie-and-legend">
+          <div class="pie-canvas-wrapper">
+            <canvas #pieCanvas class="pie-canvas" width="260" height="260"></canvas>
+          </div>
+
+          <div class="pie-legend">
+            <div class="legend-item" *ngFor="let row of chartData">
+              <span class="legend-swatch" [ngStyle]="{ background: row.color }"></span>
+              <span class="legend-label">{{ row.label }}</span>
+              <span class="legend-count">{{ row.count }} ({{ row.percent }}%)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="anon-recent" *ngIf="selectedAnonTab === 'recent' && anonymizedRecent.length">
+        <h3>Entradas recientes</h3>
+        <ul>
+          <li *ngFor="let e of anonymizedRecent">
+            <strong>{{ e.mood }}</strong>
+            <span class="anon-date"> — {{ e.created_at | date: 'short' }}</span>
+            <div class="anon-notes" *ngIf="e.notes">{{ e.notes }}</div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</div>

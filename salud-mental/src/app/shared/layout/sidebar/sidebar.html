@@ -1,0 +1,55 @@
+<div class="sidebar" [class.closed]="isClosed">
+  <div class="sidebar-header">
+    <button class="menu-btn" (click)="toggleSidebar()">☰</button>
+    <h2 *ngIf="!isClosed">{{ currentUser?.role === 'HR' ? 'HR Manager' : 'Mi Bienestar' }}</h2>
+  </div>
+
+  <nav class="sidebar-nav">
+    <div *ngFor="let item of menuItems" class="menu-item">
+      <!-- Elemento sin submenú -->
+      <a
+        *ngIf="!item.submenu"
+        [routerLink]="item.route"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="menu-link"
+        (click)="closeAllSubmenus()"
+      >
+        <span class="menu-icon">{{ item.icon }}</span>
+        <span *ngIf="!isClosed" class="menu-label">{{ item.label }}</span>
+      </a>
+
+      <!-- Elemento con submenú -->
+      <div *ngIf="item.submenu" class="menu-with-submenu">
+        <button
+          type="button"
+          class="menu-link submenu-toggle"
+          [class.active]="isSubmenuActive(item)"
+          (click)="toggleSubmenu(item)"
+          [class.expanded]="item.expanded"
+        >
+          <span class="menu-icon">{{ item.icon }}</span>
+          <span *ngIf="!isClosed" class="menu-label">{{ item.label }}</span>
+          <span *ngIf="!isClosed && item.submenu" class="submenu-arrow">
+            {{ item.expanded ? '▼' : '▶' }}
+          </span>
+        </button>
+
+        <!-- Submenú desplegable -->
+        <div *ngIf="item.expanded && item.submenu" class="submenu">
+          <a
+            *ngFor="let subitem of item.submenu"
+            [routerLink]="subitem.route"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="submenu-link"
+            (click)="closeAllSubmenus()"
+          >
+            <span class="submenu-icon">{{ subitem.icon }}</span>
+            <span *ngIf="!isClosed" class="submenu-label">{{ subitem.label }}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>

@@ -1,0 +1,43 @@
+<div class="employee-dashboard">
+  <!-- Header con usuario y logout -->
+  <header class="user-header">
+    <div class="user-info">
+      <h1>Bienvenido, {{ currentUser?.full_name }}</h1>
+      <p class="user-email">{{ currentUser?.email }}</p>
+    </div>
+    <button class="logout-btn" (click)="logout()">Cerrar Sesión</button>
+  </header>
+
+  <!-- Check-in Card -->
+  <div class="page-bg">
+    <div class="checkin-card">
+      <div class="header">
+        <div class="icon-circle">🌱</div>
+        <div>
+          <h2>¿Cómo te sientes hoy?</h2>
+          <p>Solo te tomará 30 segundos. Tu respuesta es anónima.</p>
+        </div>
+      </div>
+
+      <!-- Mood Options mejorado -->
+      <div class="mood-options">
+        <button
+          *ngFor="let mood of moods"
+          (click)="selectMood(mood.value)"
+          [class.selected]="selectedMood === mood.value"
+          class="mood-btn"
+          title="{{ mood.label }}"
+        >
+          <span class="emoji">{{ mood.emoji }}</span>
+          <span class="label">{{ mood.label }}</span>
+        </button>
+      </div>
+
+      <textarea placeholder="¿Quieres contarnos algo más? (opcional)" class="notes"></textarea>
+
+      <button class="checkin-btn" (click)="submitCheckin()">
+        {{ selectedMood ? 'Enviar Check-in' : 'Selecciona tu estado' }}
+      </button>
+    </div>
+  </div>
+</div>

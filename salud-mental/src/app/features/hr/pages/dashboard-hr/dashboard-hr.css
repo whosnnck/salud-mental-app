@@ -1,0 +1,350 @@
+/* Dashboard HR - Project style aligned */
+.hr-dashboard {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: transparent !important;
+}
+
+/* Header - use shared header tone */
+.hr-header {
+  background: linear-gradient(135deg, #e8f5e9 0%, #f4f7f6 100%);
+  border-bottom: 2px solid #2e7d32;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #2f3e46;
+}
+
+.header-left h1 {
+  margin: 0;
+  font-size: 20px;
+  color: #2e7d32;
+  font-weight: 700;
+}
+
+.header-left .subtitle {
+  margin: 0;
+  font-size: 13px;
+  color: #2f3e46;
+  opacity: 0.9;
+}
+
+.logout-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Main content */
+.hr-main {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Page hero that sits under the shared global header */
+/* page-hero removed to use shared global header */
+
+/* Summary cards */
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: white;
+  padding: 18px;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(46, 125, 50, 0.06);
+  text-align: left;
+}
+
+.card-title {
+  font-size: 12px;
+  color: #6b7280;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.card-value {
+  font-size: 26px;
+  color: #2e7d32;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+/* Employees Section */
+.employees-section {
+  background: white;
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 6px 24px rgba(15, 23, 42, 0.04);
+}
+
+.anon-checkins-section {
+  margin-top: 20px;
+  background: white;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+}
+
+.anon-submenu {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.anon-tab {
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #374151;
+}
+
+.anon-tab.active {
+  background: linear-gradient(90deg, #4caf50, #42a5f5);
+  color: white;
+}
+
+.anon-stats {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.anon-stats .stat {
+  background: #f8faf9;
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.anon-stats .stat-label {
+  font-weight: 700;
+  color: #374151;
+}
+
+.anon-stats .stat-value {
+  font-size: 18px;
+  color: #2e7d32;
+  font-weight: 800;
+}
+
+.anon-recent ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.anon-recent li {
+  padding: 10px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.anon-notes {
+  margin-top: 6px;
+  color: #374151;
+}
+
+.anon-date {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+/* Simple bar chart for moods */
+.anon-chart {
+  margin-bottom: 12px;
+}
+
+.pie-and-legend {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.pie-canvas-wrapper {
+  width: 260px;
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pie-canvas {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+}
+
+.pie-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pie-legend .legend-item {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.chart-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.chart-label {
+  width: 90px;
+  font-weight: 700;
+  color: #374151;
+}
+
+.chart-bar {
+  flex: 1;
+  background: #f1f5f9;
+  height: 12px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.chart-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 8px;
+  transition: width 0.6s ease;
+}
+
+.chart-value {
+  width: 110px;
+  text-align: right;
+  font-weight: 700;
+  color: #111827;
+}
+
+.employees-section h2 {
+  margin: 0 0 14px 0;
+  color: #111827;
+  font-size: 18px;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.employees-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.employees-table thead {
+  background: #f8faf9;
+  border-bottom: 1px solid #e6edf0;
+}
+
+.employees-table th {
+  padding: 12px 14px;
+  text-align: left;
+  font-weight: 700;
+  color: #374151;
+  font-size: 12px;
+}
+
+.employees-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #4b5563;
+}
+
+.employees-table tbody tr:hover {
+  background: #fbfdff;
+}
+
+.employees-table tbody tr.absent {
+  background: #fff7f7;
+}
+
+.name {
+  font-weight: 700;
+  color: #111827;
+}
+
+.email {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.mood,
+.checkin-time {
+  text-align: center;
+  color: #6b7280;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.status-badge.present {
+  background: #ecfdf5;
+  color: #065f46;
+}
+
+.status-badge.absent {
+  background: #fff1f2;
+  color: #b91c1c;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .hr-header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .summary-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .employees-table th,
+  .employees-table td {
+    padding: 10px;
+  }
+}
+
+.search-card input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #e6f2ea;
+}
+
+.loading,
+.error {
+  margin: 12px 0;
+}
